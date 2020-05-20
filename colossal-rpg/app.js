@@ -45,6 +45,8 @@ let commandKey = readline.keyIn("Type c for 'commands' if you get stuck " )
 let gameRunning = true;
 let inBattle = false;
 let isAlive = true;
+let isRunning = false;
+let underAttack = false;
 
 let walkCommand = readline.keyIn('Please enter the letter "W" to WALK')    
     walkHandler(walkCommand)    
@@ -109,23 +111,21 @@ while(gameRunning) {
 
 }
 
-const isRunning = false;
-const underAttack = false;
+
 
 function enemyAlertHandler() {
     if(enemyAlert === "r") { 
         // If running, there will be a 50% chance of escaping
-        isRunning = true;
         const running = console.log("You're running away!")
-        const escape = console.log("You escaped! Good job!")
-        const caught = console.log("You've been caught by the enemy! You're under attack")
-        const escapeChance = Math.floor(Math.random() * 2)
         while(isRunning === true) { // How do I do this without it constantly running
+            const escapeChance = Math.floor(Math.random() * 2)
             if (escapeChance==="1") {
+                const escape = console.log("You escaped! Good job!")
                 console.log(running + escape);
                 isRunning = false;
             }
             else {
+                const caught = console.log("You've been caught by the enemy! You're under attack")
                     console.log(caught);
                     isRunning = false;
             }
@@ -174,11 +174,11 @@ function enemyAlertHandler() {
 
 
 
-let isAttacked = false;
-while(isAttacked) {
-    enemyAlertHandler(enemyAlert)
+// let isAttacked = false;
+// while(isAttacked) {
+//     enemyAlertHandler(enemyAlert)
 
-}
+// }
     
 
 
